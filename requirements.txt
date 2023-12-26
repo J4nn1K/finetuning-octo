@@ -1,0 +1,6 @@
+gym >= 0.26
+torch
+torchvision
+h5py
+dm_control
+pyquaternion
