@@ -3,7 +3,7 @@ Based on Octo codebase (https://github.com/octo-models/octo/blob/main/examples/0
 
 This script demonstrates how to load and rollout a finetuned Octo model.
 
-Mdify the sys.path.append statement below to add the ACT repo to your path and start a virtual display:
+Modify the sys.path.append statement below to add the ACT repo to your path and start a virtual display:
     Xvfb :1 -screen 0 1024x768x16 &
     export DISPLAY=:1
 """
@@ -38,7 +38,7 @@ flags.DEFINE_string(
 gym.register(
     "aloha-sim-cube-v0",
     entry_point=lambda: AlohaGymEnv(
-    make_sim_env("sim_transfer_cube"), camera_names=["top"]#, "angle", "vis"]
+    make_sim_env("sim_transfer_cube"), camera_names=["top"]
     ),
 )
 
