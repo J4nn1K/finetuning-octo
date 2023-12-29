@@ -49,7 +49,7 @@ def main(_):
     tf.config.set_visible_devices([], "GPU")
 
     # setup wandb for logging
-    wandb.init(name="finetune_aloha", project="octo")
+    wandb.init(name="finetune_aloha", project="octo-finetuning")
 
     # load pre-trained model
     logging.info("Loading pre-trained model...")
