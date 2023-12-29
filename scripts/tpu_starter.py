@@ -1,5 +1,6 @@
 '''
 This is a script to start a TPU node using Google Cloud API Python client library.
+(especially helpful if there is currently no node available at your region...)
 
 To use this you need to authenticate on GCloud. Use the GCloud CLI for this:
 "gcloud auth application-default login"
