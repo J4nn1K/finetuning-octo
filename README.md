@@ -1,4 +1,6 @@
 # Robot Learning
+![](https://github.com/J4nn1K/robot-learning/blob/main/media/eval_examples.gif)
+
 *The following instructions were tested on Ubuntu 22.04 and Linux 5.13.0 using Python 3.10*
 ## Installation
 TODO: right folder structure
