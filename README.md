@@ -1,4 +1,4 @@
-# Finetuning Octo to new a Observation and Action Space
+# Finetuning Octo to new a Observation/Action Space
 ![](https://github.com/J4nn1K/robot-learning/blob/main/media/eval_examples.gif)
 
 ## Installation
