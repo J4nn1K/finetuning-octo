@@ -13,6 +13,7 @@ import gym
 import jax
 import numpy as np
 import wandb
+import mediapy
 
 from octo.model.octo_model import OctoModel
 from octo.utils.gym_wrappers import HistoryWrapper, RHCWrapper, UnnormalizeActionProprio
@@ -25,7 +26,6 @@ from sim_env import BOX_POSE, make_sim_env
 
 sys.path.append("./envs")
 from aloha_sim_env import AlohaGymEnv
-
 
 FLAGS = flags.FLAGS
 
@@ -44,7 +44,7 @@ gym.register(
 
 def main(_):
     # setup wandb for logging
-    wandb.init(name="eval_aloha", project="octo")
+    wandb.init(name="eval_aloha", project="octo-finetuning")
 
     # load finetuned model
     logging.info("Loading finetuned model...")
@@ -65,12 +65,12 @@ def main(_):
     policy_fn = jax.jit(model.sample_actions)
 
     # running rollouts
-    for _ in range(3):
+    for _ in range(10):
         obs, info = env.reset()
 
         # create task specification --> use model utility to create task dict with correct entries
         language_instruction = env.get_task()["language_instruction"]
-        print("INSTRUCTION: ", language_instruction)
+        # print("INSTRUCTION: ", language_instruction)
         task = model.create_tasks(texts=language_instruction)
 
         # run rollout for 400 steps
@@ -97,8 +97,13 @@ def main(_):
         #     {"rollout_video": wandb.Video(np.array(images).transpose(0, 3, 1, 2)[::2])}
         # )
         wandb.log(
-            {"rollout_video": wandb.Video(np.array(images).transpose(0, 3, 1, 2)[10:])}
+            {"rollout_video": wandb.Video(np.array(images).transpose(0, 3, 1, 2)[10:], 30)}
         )
+
+        # export to gif
+        path = f"export/evaluation/episode{_+1}.gif"
+        mediapy.write_video(path, np.array(images)[10:], fps=30, codec='gif')
+
 
 
 if __name__ == "__main__":
