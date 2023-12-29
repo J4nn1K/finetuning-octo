@@ -44,4 +44,3 @@ python scripts/finetune.py \
 --data_dir=PATH/TO/aloha_sim_dataset  \
 --save_dir=PATH/TO/CHECKPOINT/DIR
 ```
-## Evaluation
